@@ -1,0 +1,19 @@
+/* Universal selector - selects each and every element on the page and prevents browser from adding any margins or padding we don't want */
+*,
+*::after,
+*::before {
+    margin: 0;
+    padding: 0;
+    /* box-sizing: border-box; changes box model so borders & paddings are no longer added to total width/height that is specified for a box */
+    box-sizing: inherit;
+}
+
+/* Sets the root font to 10px so we can adjust every other pixel unit to 'rem' */
+html {
+    // This defines what 1rem is
+    font-size: 62.5%;
+}
+
+body {
+    box-sizing: border-box;
+}

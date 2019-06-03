@@ -1,0 +1,31 @@
+.header {
+    height: 95vh; 
+    background-image: linear-gradient(
+        to right bottom, 
+        rgba($color-primary-light, 0.8), 
+        rgba($color-primary-dark, 0.8)), 
+        url(../img/hero.jpg);
+    background-size: cover;
+    background-position: top;
+    position: relative;
+
+    clip-path: polygon(0 0, 100% 0, 100% 75vh, 0 100%); /* Clips corners into a polygon(top left, top right, bottom right, bottom left) */
+
+    &__logo-box {
+        position: absolute;
+        top: 4rem; /* These pxs are counted from the parent reference, thus you must use position: relative in the parent (in this case is the header) */
+        left: 4rem;
+    }
+
+    &__logo {
+        height: 3.5rem; /* once you specify the height, the width is automatically scaled with it */
+    }
+    
+    &__text-box {
+        position: absolute;
+        top: 40%;
+        left: 50%; /* shifts 50% of the element using the top left corner of the element as a starting point */
+        transform: translate(-50%, -50%); /* creates a new starting point at the center of the element so that it is shifted properly to the center */
+        text-align: center;
+    }
+}
