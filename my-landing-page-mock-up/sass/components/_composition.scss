@@ -1,0 +1,43 @@
+.composition {
+    position: relative; // parent element always has position relative when their child element is using position absolute
+
+    &__photo {
+        width: 55%; // width is always in percentages
+        box-shadow: 0 1.5rem 4rem rgba($color-black, .4);
+        border-radius: 2px;
+        position: absolute; // allows us to have absolute positioning of the photos
+        z-index: 10; // keeps the z-index of all photos to 10, but when hovered (which is 20) then only the hovered will be on top
+        transition: all .2s; // smoothing animation when hovered
+        outline-offset: 2rem; // offsets where the outline starts from the image
+
+        &--p1 {
+            left: 0; // start from left side
+            top: -2rem; // move image upward
+        }
+
+        &--p2 {
+            right: 0; // start from right side
+            top: 2rem; // move image downward
+        }
+
+        &--p3 {
+            left: 20%;
+            top: 10rem;
+        }
+
+        // Scales up picture with an outline and a bigger shadow when hovered
+        &:hover {
+            outline: 1.5rem solid $color-primary;
+            transform: scale(1.05) translateY(-.5rem);
+            box-shadow: 0 2.5rem 4rem rgba($color-black, .5);
+            z-index: 20;
+
+        }
+    }
+
+    // Shrinks all images that aren't hovered
+    &:hover &__photo:not(:hover) { // .composition:hover composition__photo:not(:hover) {}
+        transform: scale(.9)
+    }
+
+}
