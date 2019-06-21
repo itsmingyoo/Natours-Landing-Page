@@ -1,5 +1,6 @@
 /* Buttons */
 .btn {
+    &,
     &:link,
     &:visited {
         text-transform: uppercase;
@@ -11,6 +12,10 @@
         transition: all .2s; /* makes button gradually transition back to original state when it isn't hovered */
         position: relative;
         font-size: $default-font-size;
+
+        // Change for the <button> element
+        border: none;
+        cursor: pointer;
     }
 
     /* Bigger shadow on hover */
@@ -25,7 +30,9 @@
     }
 
     /* Smaller shadow on click */
-    &:active {
+    &:active,
+    &:focus {
+        outline: none;
         transform: translateY(-1px);
         box-shadow: 0 .5rem 1rem rgba($color-black, .2);
     }
