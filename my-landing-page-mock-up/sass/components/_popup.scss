@@ -22,11 +22,18 @@
         opacity: 0;
         transform: translate(-50%, -50%) scale(.25); // absCenter already includes a transform: translate(-50%, -50%) and because this transform is last in the css, we need to include the mixin's transform here in order for both transforms to work.
         transition: all .4s .2s; // .2s = delay -- the popup black bg fades in by .3s, and this delays the popup BOX by .2s 
+        
+        
     }
 
     &__left {
         width: 33.33333%;
         display: table-cell;
+
+        @include respond(phone) {
+            width: 100%;
+            display: inline-block;
+        }
     }
 
     &__right {
@@ -34,6 +41,11 @@
         display: table-cell;
         vertical-align: middle;
         padding: 3rem 5rem;
+
+        @include respond(phone) {
+            width: 100%;
+            display: inline-block;
+        }
     }
 
     &__img {
@@ -69,6 +81,10 @@
     &:target &__content {
         opacity: 1;
         transform: translate(-50%, -50%) scale(1);
+
+        @include respond(phone) {
+            transform: translate(-50%, -50%) scale(.9);
+        }
     }
 
     &__close {

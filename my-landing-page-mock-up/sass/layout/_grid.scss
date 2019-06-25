@@ -5,6 +5,15 @@
 
     &:not(:last-child) {
         margin-bottom: $gutter-vertical;
+
+        @include respond(tab-port) {
+            margin-bottom: $gutter-vertical-small;
+        }
+    }
+
+    @include respond(tab-port) {
+        max-width: 50rem;
+        padding: 0 3rem;
     }
 
     @include clearfix;
@@ -15,6 +24,15 @@
 
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
+
+            @include respond(tab-port) {
+                margin-right: 0; // since we want these columns to take up the entire 100% width -- meaning we want 1 column per row on mobile devices -- we can now remove the gutter/margins that would be between each column
+                margin-bottom: $gutter-vertical-small;
+            }
+        }
+
+        @include respond(tab-port) {
+            width: 100% !important; // !important overwrites the calculated column widths below in order for it to look the way you want it in 'tab-port' mobile devices
         }
     }
 
