@@ -9,6 +9,13 @@
     opacity: 0;
     visibility: hidden;
     transition: all .3s;
+    
+    // if these arguments are supported on the browser, then apply the following css
+    @supports(-webkit-backdrop-filter: blur(10px)) or (backdrop-filter: blur(10px)) {
+        -webkit-backdrop-filter: blur(10px);
+        backdrop-filter: blur(10px);
+        background-color: rgba($color-black, .3);
+    }
 
     &__content {
         @include absCenter;

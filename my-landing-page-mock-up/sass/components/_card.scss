@@ -13,6 +13,7 @@
         top: 0;
         left: 0;
         width: 100%;
+        -webkit-backface-visibility: hidden;
         backface-visibility: hidden;
         border-radius: 3px; // adds rounded corners to the card
         overflow: hidden; // prevents __picture--# from overlapping and changing the rounded border-radius corners to sharp corners
@@ -178,7 +179,9 @@
 
 
     // M E D I A  Q U E R Y 
-    @include respond(tab-port) {
+    // @include respond(tab-port) { commenting this out because we need to make this section a media query to identify non-touch and touch-screen devices for our card to know if it should have the hover/backside effect
+    @media only screen and (max-width: 56.25em),
+           only screen and (hover: none) {
         height: auto;
         border-radius: 3px;
         background-color: $color-white;

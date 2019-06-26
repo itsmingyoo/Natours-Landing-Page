@@ -23,11 +23,18 @@
         width: 15rem;
         height: 15rem;
         float: left;
-        // -webkit-shape-outside: circle(50% at 50% 50%); dont need this in chrome in 2019
-        shape-outside: circle(50% at 50% 50%); // makes a circle shape outside, (radius at vertical% horizontal%)
-        clip-path: circle(50% at 50% 50%); // clips background color to a circle, this is the inner circle color
         transform: translateX(-3rem) skewX(12deg); // moves circle/shape to the left, skews other direction (skew is added here bc you 'transform' takes precedence over skew if you put it in & > * { skewX(12deg) }
         position: relative;
+        overflow: hidden;
+        border-radius: 50%;
+
+        @supports (clip-path: polygon(0 0)) or (-webkit-clip-path: polygon(0 0)) {
+            -webkit-clip-path: circle(50% at 50% 50%);
+            clip-path: circle(50% at 50% 50%); // clips background color to a circle, this is the inner circle color
+            -webkit-shape-outside: circle(50% at 50% 50%); //dont need this in chrome in 2019
+            shape-outside: circle(50% at 50% 50%); // makes a circle shape outside, (radius at vertical% horizontal%)
+            border-radius: none;
+        }
 
         @include respond(phone) {
             transform: translateX(-3rem) skewX(0);
@@ -38,7 +45,7 @@
         height: 100%;
         transform: translateX(-4rem) scale(1.4);
         transition: all .5s;
-        // backface-visibility: hidden; this fixed lecturer's  problem of incorrect shape? this problem isnt occurring for us though, no glitches needed to fix.
+        backface-visibility: hidden; // this fixed lecturer's  problem of incorrect shape? this problem isnt occurring for us though, no glitches needed to fix.
     }
 
     &__text {

@@ -25,6 +25,7 @@
         &:not(:last-child) {
             margin-right: $gutter-horizontal;
 
+            // makes card columns vertical
             @include respond(tab-port) {
                 margin-right: 0; // since we want these columns to take up the entire 100% width -- meaning we want 1 column per row on mobile devices -- we can now remove the gutter/margins that would be between each column
                 margin-bottom: $gutter-vertical-small;
